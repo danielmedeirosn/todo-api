@@ -6,6 +6,8 @@ RUN npm ci --omit=dev
 
 FROM node:22-alpine
 ENV NODE_ENV=production
+ARG APP_VERSION=dev
+ENV APP_VERSION=${APP_VERSION}
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY package.json ./
